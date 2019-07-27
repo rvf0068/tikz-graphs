@@ -1,0 +1,140 @@
+#+title: Testing the new TikZ graph library
+#+author: 
+#+options: toc:nil
+
+#+latex_header: \usepackage{listings}
+#+latex_header: \usepackage{tikz}
+#+latex_header: \usetikzlibrary{graphs}
+#+latex_header: \usetikzlibrary{graphs.standard}
+
+#+property: header-args:latex :imagemagick t :iminoptions -density 300 -resize 400
+#+property: header-args:latex+ :packages '(("" "tikz")) :border 1pt
+#+property: header-args:latex+ :headers '("\\usetikzlibrary{graphs}\\usetikzlibrary{graphs.standard}")
+#+property: header-args:latex+ :exports both :results raw file :cache yes
+
+=\graph= is a shorthand for =\path graph= (section 5.4.1).
+
+#+name: 001
+#+header: :file (by-backend (latex "001.tikz") (beamer "001.tikz") (t "001.png"))
+#+begin_src latex 
+\tikz\graph {a -> {b, c} -> d};
+#+end_src
+
+#+RESULTS[576838ebb777cd3705c53265de2b0c38d07e5236]: 001
+[[file:001.png]]
+
+#+name: 002
+#+header: :file (by-backend (latex "002.tikz") (beamer "002.tikz") (t "002.png"))
+#+begin_src latex 
+\tikz\graph [math nodes,
+branch right,
+nodes={draw, circle, thick,
+  font=\bfseries\tiny, circle, inner sep=1pt}]%
+{ subgraph I_n [V={a_1,b,c}] };
+#+end_src
+
+#+RESULTS[e017f89081ea6148001f3f450ea621ac98b683ca]: 002
+[[file:002.png]]
+
+#+name: 003
+#+header: :file (by-backend (latex "003.tikz") (beamer "003.tikz") (t "003.png"))
+#+begin_src latex 
+  \tikz\graph [clockwise, clique, nodes={draw, circle}] { subgraph I_n [n=4] };
+#+end_src
+
+#+RESULTS[f435394be67335af4bf0024eeb371f3bdc7d11d3]: 003
+[[file:003.png]]
+
+#+caption: A graph
+#+name: 004
+#+header: :file (by-backend (latex "004.tikz") (beamer "004.tikz") (t "004.png"))
+#+begin_src latex 
+    \tikz\graph [clockwise] { subgraph K_n [n=4] -- x [red]};
+#+end_src
+
+#+RESULTS[59eb92e1bb791a97941f357e461e4a77da281049]: 004
+[[file:004.png]]
+
+#+caption: A path
+#+name: 005
+#+header: :file (by-backend (latex "005.tikz") (beamer "005.tikz") (t "005.png"))
+#+begin_src latex 
+  \tikz\graph [branch right] { subgraph P_n [n=5] };
+#+end_src
+
+#+RESULTS[d6ccd77054f0ec72c5eae2e723b86b3effbab8fe]: 005
+[[file:005.png]]
+
+#+name: 006
+#+header: :file (by-backend (latex "006.tikz") (beamer "006.tikz") (t "006.png"))
+#+begin_src latex 
+  \tikz\graph { subgraph P_n [n=3] };
+#+end_src
+
+#+RESULTS[bc6a3bc5ed275f8b5bf080c52bb4a26b62007b7b]: 006
+[[file:006.png]]
+
+#+name: 007
+#+header: :file (by-backend (latex "007.tikz") (beamer "007.tikz") (t "007.png"))
+#+begin_src latex 
+  \tikz\graph[branch right, nodes={circle, draw}] { subgraph P_n [n=4] };
+#+end_src
+
+#+RESULTS[5a07811ad2e4e787fbb5ca36c2f8039fac961fc0]: 007
+[[file:007.png]]
+
+#+name: 008
+#+header: :file (by-backend (latex "008.tikz") (beamer "008.tikz") (t "008.png"))
+#+begin_src latex 
+  \tikz\graph[branch right, nodes={circle, draw, empty nodes}] { subgraph P_n [n=4] };
+#+end_src
+
+#+RESULTS[b5fa4ff92e9e4804d414a94c8bae51a63c274e11]: 008
+[[file:008.png]]
+
+#+name: 009
+#+header: :file (by-backend (latex "009.tikz") (beamer "009.tikz") (t "009.png"))
+#+begin_src latex 
+  \tikz\graph[branch right, nodes={circle, very thick, draw=red, top color=white, bottom color=green, empty nodes}] { subgraph P_n [n=4] };
+#+end_src
+
+#+RESULTS[1e284adbc1b941b75174146ec33b7cfc8b25762e]: 009
+[[file:009.png]]
+
+#+name: 010
+#+header: :file (by-backend (latex "010.tikz") (beamer "010.tikz") (t "010.png"))
+#+begin_src latex 
+  \tikz\graph[branch right, node distance=3cm, nodes={rectangle, top color=gray, bottom color=orange, font=\tiny\ttfamily, inner sep=1pt}] { subgraph P_n [n=4] };
+#+end_src
+
+#+RESULTS[f9c7eed5c823f14ad9ebd549bf38a593cffd83a4]: 010
+[[file:010.png]]
+
+#+name: 011
+#+header: :file (by-backend (latex "011.tikz") (beamer "011.tikz") (t "011.png"))
+#+begin_src latex 
+\begin{tikzpicture}
+  \graph[branch right=2cm] { subgraph P_n [n=4] };
+\end{tikzpicture}
+#+end_src
+
+#+RESULTS[30ce60b44db6e1378fa87a9ce86e22c2f331fb49]: 011
+[[file:011.png]]
+
+#+name: 012
+#+header: :file (by-backend (latex "012.tikz") (beamer "012.tikz") (t "012.png"))
+#+begin_src latex 
+\begin{tikzpicture}
+  \graph[branch right=2cm, edges={very thick, red}] { subgraph P_n [n=4] };
+\end{tikzpicture}
+#+end_src
+
+#+RESULTS[273ea38b22e19d4368d677e8da91af2ac7af9c52]: 012
+[[file:012.png]]
+
+* COMMENT Local Variables
+
+# Local Variables:
+# org-confirm-babel-evaluate: nil
+# org-latex-image-default-width: ""
+# End:
