@@ -1,4 +1,4 @@
-#+title: Testing the new TikZ graph library
+#+title: Testing the TikZ graph library
 #+author: 
 #+options: toc:nil
 
